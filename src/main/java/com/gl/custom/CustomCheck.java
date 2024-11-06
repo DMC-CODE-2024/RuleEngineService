@@ -21,15 +21,16 @@ public class CustomCheck {
             conn = DatabaseConnection.getConnection();
             logger.info("Checking Connection : {}", conn);
         } catch (Exception e) {
+            logger.error("Not able to Connect : {}", e);
         }
-       return identifyCustomComplianceStatus( conn,  imei,  source, "");
+        return identifyCustomComplianceStatus(conn, imei, source, "");
     }
 
     public static String identifyCustomComplianceStatus(Connection conn, String imei, String source) {
-        return  identifyCustomComplianceStatus( conn,  imei,  source, "");
+        return identifyCustomComplianceStatus(conn, imei, source, "");
     }
 
-    public static String identifyCustomComplianceStatus(Connection conn, String imei, String source,String reqId) {
+    public static String identifyCustomComplianceStatus(Connection conn, String imei, String source, String reqId) {
         var result = checkInGdceData(conn, imei);
         if (!result.equalsIgnoreCase("false")) {
             return result;
@@ -43,8 +44,8 @@ public class CustomCheck {
     }
 
     private static String checkFromApi(Connection conn, String imei, String source, String reqId) {
-            CustomApiResponse r = getDataFromApi(conn,imei);
-        logger.info("fin Api response {}", r);
+        CustomApiResponse r = getDataFromApi(conn, imei);
+        logger.info(" Api response {}", r);
         if (r.getStatus().equalsIgnoreCase("Error")) {
             saveInGdceApiCallHistory(conn, imei, r.getMessage(), "", "Error", source);
             return "ERROR"; // return blank
@@ -52,10 +53,10 @@ public class CustomCheck {
             saveInGdceApiCallHistory(conn, imei, r.getMessage(), "false", "Success", source);
             return "FALSE";
         } else {
-            saveInGdceData(conn, imei, r.getResult() ,source ,reqId);  //
+            saveInGdceData(conn, imei, r.getResult(), source, reqId);  //
             saveInGdceApiCallHistory(conn, imei, r.getMessage(), "true", "Success", source);
             return "TRUE";
-            }
+        }
     }
 }
 //       try{

@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class STOLEN implements ExecutionInterface {
 
@@ -20,7 +19,6 @@ public class STOLEN implements ExecutionInterface {
                 "  union" +
                 " SELECT 1  FROM lost_device_detail where imei like '" + ruleEngine.imei + "%' " +
                 " and ( request_type like '%STOLEN%' or request_type like '%LOST%' )";
-        // String query = "select *  from " + ruleEngine.app + ".lost_device_detail where imei like '" + ruleEngine.imei + "%' ";
         logger.info("Query " + query);
         var response = "NO";
         try (ResultSet rs = ruleEngine.statement.executeQuery(query)) {

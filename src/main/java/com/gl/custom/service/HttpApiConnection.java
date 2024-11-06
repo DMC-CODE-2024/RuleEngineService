@@ -76,7 +76,7 @@ public class HttpApiConnection {
         headers.set(camDxHeaderName, camDxHeaderValue);
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("imei", imei);
-        return httpConnectionForApp(url, headers, map ,conn);
+        return httpConnectionForApp(url, headers, map, conn);
     }
 
     private static ResponseEntity<String> authenticationApi(Connection conn) {
@@ -92,8 +92,9 @@ public class HttpApiConnection {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("client_id", clientId);
         map.add("secret_key", secretKey);
+        logger.info("Fetching Auth Details " + headers);
         try {
-            ResponseEntity<String> response = httpConnectionForApp(url, headers, map,conn);
+            ResponseEntity<String> response = httpConnectionForApp(url, headers, map, conn);
             logger.info(" Auth Response Code {} with  {}", response.getStatusCodeValue(), response.getBody());
             return response;
         } catch (Exception e) {
