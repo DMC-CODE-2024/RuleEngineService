@@ -13,7 +13,6 @@ public interface RulesList {
     static List<Object> getItems() {
         return List.of(
                 new IMEI_LENGTH(),
-                new EXISTS_IN_GSMA_DETAILS_DB(),
                 new EXISTS_IN_GREYLIST_DB(),
                 new EXISTS_IN_ALL_ACTIVE_DB(),
                 new IMEI_LUHN_CHECK(),
