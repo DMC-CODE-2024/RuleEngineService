@@ -22,7 +22,7 @@ public class PropertyReader {
     static Logger logger = LogManager.getLogger(PropertyReader.class);
 
     public String getConfigPropValue(String key) throws IOException {
-        prop = loadProperties(System.getenv("commonConfigurationFilePath"));
+        prop = loadProperties(System.getenv("commonConfigurationFile"));
         if (Objects.nonNull(prop)) {
             return prop.getProperty(key);
         } else {
