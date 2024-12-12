@@ -26,10 +26,11 @@ public class SQLConnection {
             propertyReader = new PropertyReader();
         }
         Connection conn = null;
+        String jdbcDriver="",dbURL="",username="";
         try {
-            String jdbcDriver = propertyReader.getConfigPropValue("jdbc_driver").trim();
-            String dbURL = propertyReader.getConfigPropValue("db_url").trim();
-            String username = propertyReader.getConfigPropValue("dbUsername").trim();
+             jdbcDriver = propertyReader.getConfigPropValue("jdbc_driver").trim();
+              dbURL = propertyReader.getConfigPropValue("db_url").trim();
+              username = propertyReader.getConfigPropValue("dbUsername").trim();
             String password = decryptor(propertyReader.getConfigPropValue("dbEncyptPassword").trim());
             Class.forName(jdbcDriver);
             conn = DriverManager.getConnection(dbURL, username, password);
@@ -37,7 +38,7 @@ public class SQLConnection {
                 logger.info("Connection created successfully " + conn + " .. " + java.time.LocalDateTime.now());
             return conn;
         } catch (Exception e) {
-            logger.error(" Error : : " + e + " :  " + e.getLocalizedMessage());
+            logger.error("Db Cred"+ dbURL +"username " + username +  " Error : : " + e + " :  " + e.getLocalizedMessage());
             return null;
         }
     }

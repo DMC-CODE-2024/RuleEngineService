@@ -20,7 +20,7 @@ public class IMEI_LENGTH implements ExecutionInterface {
         if (ruleEngine.actualImei.length() == 14 || ruleEngine.actualImei.length() == 15 || ruleEngine.actualImei.length() == 16) {
             res = "Yes";
         }
-        logger.info("IMEI_LENGTH " + ruleEngine.actualImei + "::" + ruleEngine.actualImei.length() + "::RESPONSE  if NO then fail ::" + res);
+   //     logger.info("IMEI_LENGTH " + ruleEngine.actualImei + "::" + ruleEngine.actualImei.length() + "::RESPONSE  if NO then fail ::" + res);
         return res;
     }
 

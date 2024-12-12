@@ -21,7 +21,6 @@ public class IMEI_NULL implements ExecutionInterface {
     public String executeRule(RuleInfo ruleEngine) {
         String res = "";
         String pattern = "999999999999999";
-        logger.info("CONNNN " + ruleEngine.connection + "ACTUAL " + ruleEngine.actualImei);
         try (var stt = ruleEngine.connection.createStatement(); ResultSet rs = stt.executeQuery("select value from sys_param where tag ='CDR_NULL_IMEI_REPLACE_PATTERN'")) {
             while (rs.next()) {
                 pattern = rs.getString("value");

@@ -22,11 +22,10 @@ public class DatabaseConnection {
 
     private static Connection connection = null;
 
-    @PostConstruct
-    public static void initialize() throws Exception {
-        createConnection();
-
-    }
+//    @PostConstruct
+//    public static void initialize() throws Exception {
+//        createConnection();
+//    }
 
     private static void createConnection() {
         try {

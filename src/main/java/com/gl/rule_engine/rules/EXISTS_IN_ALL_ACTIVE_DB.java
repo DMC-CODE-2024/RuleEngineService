@@ -23,7 +23,7 @@ public class EXISTS_IN_ALL_ACTIVE_DB implements ExecutionInterface {
         String res = null;
         try {
             String qry = "select sum(cnt) from   (select count(imei) as cnt  from " + ruleEngine.app + ".active_unique_imei where imei = '" + ruleEngine.imei + "' and MSISDN = '" + ruleEngine.msisdn + "'   union select count(imei)  as cnt from app.active_imei_with_different_msisdn where imei = '" + ruleEngine.imei + "' and MSISDN = '" + ruleEngine.msisdn + "' ) a  ";
-            logger.info("Query " + qry);
+            logger.debug("Query " + qry);
             stmt2 = ruleEngine.connection.createStatement();
             result1 = stmt2.executeQuery(qry);
             int res1 = 0;
