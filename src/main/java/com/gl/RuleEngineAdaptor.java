@@ -74,7 +74,6 @@ public class RuleEngineAdaptor {
         return outputmap;
     }
 
-
     public static ArrayList getRuleDetails(Connection conn, Map<String, String> device_info) {
         ArrayList rule_details = new ArrayList<RuleAttribute>();
         String period = getPeriodFromSysParam(conn, device_info.get("appdbName")); // write code to get Period
