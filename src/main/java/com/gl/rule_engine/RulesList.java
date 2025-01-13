@@ -25,7 +25,7 @@ public interface RulesList {
                 new DUPLICATE_DEVICE(),
                 new NWL_VALIDITYFLAG(),
                 new STOLEN(),
-                new TRC(),
+                
                 new CUSTOM_LOCAL_MANUFACTURER(),
                 new NATIONAL_WHITELISTS(),
                 new CUSTOM_GDCE(),
