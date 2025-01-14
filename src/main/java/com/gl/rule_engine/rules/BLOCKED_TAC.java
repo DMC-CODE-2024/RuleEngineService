@@ -13,7 +13,7 @@ public class BLOCKED_TAC implements ExecutionInterface {
 
     @Override
     public String executeRule(RuleInfo ruleEngine) {
-        String query = "select *  from " + ruleEngine.app + ".blocked_tac where tac = '" + ruleEngine.imei.substring(0, 8) + "' ";
+        String query = "select *  from " + ruleEngine.app + ".blocked_tac_list where tac = '" + ruleEngine.imei.substring(0, 8) + "' ";
         logger.debug("Query " + query);
         var response = "NO";
         try (ResultSet rs = ruleEngine.statement.executeQuery(query)) {
