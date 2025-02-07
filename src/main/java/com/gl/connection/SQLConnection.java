@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.stereotype.Component;
+import java.util.Properties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,7 +34,13 @@ public class SQLConnection {
               username = propertyReader.getConfigPropValue("dbUsername").trim();
             String password = decryptor(propertyReader.getConfigPropValue("dbEncyptPassword").trim());
             Class.forName(jdbcDriver);
-            conn = DriverManager.getConnection(dbURL, username, password);
+            Properties properties = new Properties();
+            properties.setProperty("user", username);
+            properties.setProperty("password", password);
+            properties.setProperty("autoReconnect", "true");
+            properties.setProperty("interactiveClient", "true");
+            conn = DriverManager.getConnection(dbURL, properties);
+            //conn = DriverManager.getConnection(dbURL, username, password);
             if (conn != null)
                 logger.info("Connection created successfully " + conn + " .. " + java.time.LocalDateTime.now());
             return conn;
